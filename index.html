@@ -11,6 +11,16 @@
     <title>crib-session</title>
   </head>
   <style>
+    .appear{
+      opacity: 1 !important;
+    }
+    .message{
+      position: absolute;
+      top: 5vh;
+      left:55%;
+      width: 30%;
+      opacity: 0;
+    }
     .logo{
       position: absolute;
       top: 35vh;
@@ -19,11 +29,27 @@
       width: 10vw;
       z-index: 1000;
       background-color: white;
+      border-radius: 10vw 10vw 10vw 10vw;
+      background-image:url('logo.png');
+      background-size: 8vw;
+       background-repeat: no-repeat ;
+       background-position: center;
     }
    .left-top{
     height: 40vh; 
     background-color: blue;
     width: 35%;
+   }
+   .head{
+    line-height: 30px;
+    font-size: 2.2em;
+    color: white;
+    text-align: justify;
+    left: 15%;
+    width: 24.5vw;
+    justify-self: start;
+    position: relative;
+    font-family: 'Open Sans',sans-serif;
    }
    .left-bottom{
     height: 60vh;
@@ -63,28 +89,110 @@
     width: 50%;
     text-decoration: none;
    }
-   
+   @media(max-width: 750px){
+    .message{
+      position: absolute;
+      top: 16vh;
+      left:10%;
+      width: 50%;
+      opacity: 0;
+    }
+    .logo{
+      position: absolute;
+      top: 5vh;
+      left: 85%;
+      height:50px;
+      width: 50px;
+      z-index: 1000;
+      background-color: transparent;
+      
+      border-radius: 50px 50px 50px 50px;
+      background-image:url('logo2.png');
+      background-size: 50px;
+       background-repeat: no-repeat ;
+       background-position: center;
+    }
+   .left-top{
+    height: 40vh; 
+    background-color:hsl(214.2, 98.9%, 36.5%);
+    width: 35%;
+    opacity: 0;
+   }
+   .left-bottom{
+    height: 15vh;
+     background-color: hsl(214.2, 98.9%, 36.5%); 
+     width: 100%;
+      padding: 0; 
+      top: 0;
+      position: absolute;
+   }
+   .head{
+    line-height: 30px;
+    font-size: 25px;
+    color: white;
+    text-align: justify;
+    width: 100%;
+    left: 10px;
+    top: 20px;
+    justify-self: start;
+    position: relative;
+    font-family: 'Open Sans',sans-serif;
+   }
+   .main{
+    height: 50vh;
+     width: 80%;
+     left: 10%;
+      position: absolute;
+      top: 25vh;
+
+   }
+   .text{
+    border: 3px solid #555;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: .5s;
+
+   }
+   .logbut{
+    border: 0;
+    background-color: hsl(214.2, 98.9%, 36.5%);
+    border-radius: 25px;
+    margin: 12px 2px 0;
+    cursor: pointer;
+    font-size: .95em;
+    max-width: 200px;
+    -webkit-appearance: none;
+    color: white;
+    padding: 10px;
+    width: 50%;
+    text-decoration: none;
+   }
+   }
   </style>
   <body>
     
-    <div style="border-radius: 10vw 10vw 10vw 10vw; background-image:url('logo.png'); background-size: 8vw; background-repeat: no-repeat ;background-position: center;"class="logo">
+    <div class="logo">
    
     </div>
    
      <div class="left-top"></div>
      <div class = "left-bottom">
-           <div style="line-height: 30px;font-size: 2.2em;color: white;text-align: justify;left: 15%;width: 24.5vw;justify-self: start;position: relative;font-family: 'Open Sans',sans-serif;">
+           <div  class = "head">
            <span style="line-height: 50px;">Computer Center<br></span>
            <span style="font-size: .5em;">IIT Bombay</span>
            </div>
     </div>
+    <div class="alert alert-danger message" role="alert"  id = "red">
+      Invalid Login
+    </div>
     <div class = "main">
       <span style = "font-size: 23px; color: grey;font-family: 'Open Sans',sans-serif;">Sign in with LDAP</span><br><br>
-      <input autofocus="" placeholder="IITB LDAP Username" class = "text"><br> <br>
-      <input autofocus="" placeholder="OTP" class = "text"><br>
+      <input autofocus="" placeholder="IITB LDAP Username" class = "text" id = "roll"><br> <br>
+      <input autofocus="" placeholder="OTP" class = "text" id = "redundant"><br>
       <span style="font-size: 10px;margin-left: 10px;">Enter the OTP from your registered authenticator app</span>
       <br><br>
-      <input type="submit" value="Login" name="login" class="logbut">
+      <input type="submit" value="Login" name="login" class="logbut" onclick="check()">
       </div>
       
     </div>
@@ -93,6 +201,22 @@
   
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+      function check() {
+       
+  var rollno =  document.getElementById("roll").value;
+  var redundant = document.getElementById("redundant").value;
+
+  if(rollno == '19D180017'&& redundant != 'OTP' && redundant != '') {
+  window.open("https://www.google.com/"); 
+  }
+  else{
+    var element = document.getElementById("red");
+    element.classList.add("appear");
+  }
+  }
+  
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
