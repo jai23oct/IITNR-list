@@ -192,6 +192,11 @@
       <input autofocus="" placeholder="OTP" class = "text" id = "redundant"><br>
       <span style="font-size: 10px;margin-left: 10px;">Enter the OTP from your registered authenticator app</span>
       <br><br>
+      
+
+      <img src="https://www5b.wolframalpha.com/Calculate/MSP/MSP34031h77id1h5e897ead000064706e77h0070f8g?MSPStoreType=image/gif&amp;s=41&amp;w=365.&amp;h=42." id="i_0200_1" alt="poppluchaman" title="poppluchaman" data-attribution="" width="365." height="42.">
+      <input type="text" placeholder="Enter Captcha" id = "captcha" autofocus="" class="text">
+      <br> <br>
       <input type="submit" value="Login" name="login" class="logbut" onclick="check()">
       </div>
       
@@ -206,9 +211,9 @@
        
   var rollno =  document.getElementById("roll").value;
   var redundant = document.getElementById("redundant").value;
-
-  if(rollno == '19D180017'&& redundant != 'OTP' && redundant != '') {
-  window.open("https://www.google.com/"); 
+  var captcha = document.getElementById("captcha").value;
+  if(rollno == '19D180017'&& redundant != 'OTP' && redundant != '' && captcha == "poppluchaman") {
+  window.open("https://jaiswalrohit07.github.io/pro/"); 
   }
   else{
     var element = document.getElementById("red");
